@@ -11,7 +11,7 @@
    name: "{{ package[1] }}"
    enabled: yes
 
-- name: Configure "{{ package[1] }}"
+- name: Configure {{ package[1] }}
   template:
    src: haproxy.cfg.j2
    dest: /etc/haproxy/haproxy.cfg
