@@ -1,6 +1,4 @@
 ---
 # vars file for lb-tier
 
-packages:
- - httpie
- - haproxy
+inst_ha: haproxy

@@ -1,18 +1,21 @@
 ---
 - name: Intall the require packages
   package:
-   name: "{{ item }}"
+   name: "{{ inst_ha }}"
    state: latest
-  loop: 
-   "{{ packages }}" 
 
 - name: Start Load balancer at boot
   service:
-   name: "{{ package[1] }}"
+   name: "{{ inst_ha }}"
    enabled: yes
 
-- name: Configure {{ package[1] }}
+- name: Start Load balacer serivice
+  service:
+   name: "{{ inst_ha }}"
+   state: started
+
+- name: Configure {{ inst_ha }}
   template:
    src: haproxy.cfg.j2
    dest: /etc/haproxy/haproxy.cfg
-  notify: restart {{ package[1] }}
+  notify: restart {{ inst_ha }}
