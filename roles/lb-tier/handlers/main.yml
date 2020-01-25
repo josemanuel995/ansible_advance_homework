@@ -1,7 +1,7 @@
 ---
 # handlers file for lb-tier
 
-- name: Restart HA_proxy
+- name: Restart {{ package[1] }}
   service:
-   name: haproxy
+   name: {{ package[1] }}
    state: restarted
