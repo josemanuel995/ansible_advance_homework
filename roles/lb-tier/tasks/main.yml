@@ -1,2 +1,20 @@
 ---
 # tasks file for lb-tier
+
+- name: Intall httpie and haproxy
+  package:
+   name: "{{ item }}"
+   state: latest
+  loop: 
+   "{{ packages }}" 
+
+- name: Start Load balancer at boot
+  service:
+   name: haproxy
+   enabled: yes
+
+- name: Configure HA_proxy
+  template:
+   src: haproxy.cfg.j2
+   dest: /etc/haproxy/haproxy.cfg
+  notify: restart HA_proxy
