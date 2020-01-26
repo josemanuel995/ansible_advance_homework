@@ -1,2 +1,7 @@
 ---
-# handlers file for db-tier
+# handlers file for db-tiern
+- name: enable {{ possgr }} at boot
+  service:
+   name: "{{ possgr }}"
+   state: started
+   
