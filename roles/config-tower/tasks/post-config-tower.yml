@@ -9,19 +9,18 @@
 
 # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
 
-#- name: Machine Credential to connect to workstation using openstack.pem
-#  tower_credential:
-#    name: "{{ ssh_cred_name }}"
-#   organization: Default
-#    state: present
-#    kind: ssh
-#Tower credential block
-#    tower_host: "tower1.{{ tower_GUID }}.example.opentlc.com"
-#    tower_username: admin
-#    tower_password: r3dh4t1!
-##########################################################
-#    ssh_key_data: "{{ lookup('file', '/root/.ssh/openstack.pem') }}"
-#    username: ec2-user
+- name: Machine Credential to connect to workstation using openstack.pem
+  tower_credential:
+   tower_host: "tower1.{{ tower_GUID }}.example.opentlc.com"
+   tower_username: "{{ user_name }}"
+   tower_password: "{{ password }}"
+   name: "{{ ssh_cred_name }}"
+   organization: Default
+   state: present
+   kind: ssh
+   username: "{{ user_cred_name }}"
+   ssh_key_data: "{{ lookup('file', '/root/.ssh/openstack.pem') }}" 
+
 
 - name: Create Inventory
   command: |
@@ -50,7 +49,7 @@
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
-    ssh_key_data: /root/.ssh/mykey.pem
+    ssh_key_data: /root/.ssh/LabRedFoundprivLin.pem
     username: "{{ opentlc_login }}"
 
 - name: Remove secret
