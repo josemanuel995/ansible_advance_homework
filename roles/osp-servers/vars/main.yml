@@ -8,6 +8,7 @@ osp_servers:
     key_name: ansible_ssh
     flavor: m2.small
     security_group: frontend
+    network: ext_network
     meta:
       - { group: frontends, deployment_name: QA}
   app1:
