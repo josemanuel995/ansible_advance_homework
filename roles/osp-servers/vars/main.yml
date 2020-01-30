@@ -18,6 +18,7 @@ osp_servers:
     key_name: ansible_ssh
     flavor: m2.small
     security_group: apps
+    network: ext_network
     meta:
       - { group: apps, deployment_name: QA}
   app2:
@@ -27,6 +28,7 @@ osp_servers:
     key_name: ansible_ssh
     flavor: m2.small
     security_group: apps
+    network: ext_network
     meta:
       - { group: apps, deployment_name: QA}
   db:
@@ -36,5 +38,6 @@ osp_servers:
     key_name: ansible_ssh
     flavor: m2.small
     security_group: db
+    network: int_network
     meta:
       - { group: appdbs, deployment_name: QA}

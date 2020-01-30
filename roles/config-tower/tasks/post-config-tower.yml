@@ -5,6 +5,7 @@
    scm_type: git
    scm_branch: "{{ scm_branch }}"
    scm_url: "{{ scm_url }}"
+   scm_update_on_launch: yes
    
 
 # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml

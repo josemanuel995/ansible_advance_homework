@@ -1,22 +1,40 @@
 ---
-
 # tasks file for osp.servers
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   os_server:
-    cloud: os_server
+    cloud: ospserver
     name: "{{ item.value.name }}"
-    state: "{{item.value.state }}"
+    state: "{{ item.value.state }}"
     image: "{{ item.value.image }}"
     key_name: "{{ item.value.key_name }}"
     flavor: "{{ item.value.flavor }}"
-    security_group: "{{ item.value.securit_group }}"
+    security_group: "{{ item.value.security_group }}"
     meta:
      group: "{{ item.value.meta[0] }}"
      deployment_name: "{{ item.value.meta[1] }}"
-    network: "{{ }}"
-   with_dict: "{{ osp_servers }}"
+    nics:
+     - net-name: "{{ item.value.network }}"
+    wait: yes
+    user_data: |
+      #!/bin/bash
+       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+       curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+       cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
+    with_dict: "{{ osp_servers }}"
 
-- name: Add floating IP to Servers
-   name: "  
+- name: Add floating IP to "{{ item.value.name }}"
+   cloud: osp_cloud
+   state: "{{ item.value.state }}"
+   reuse: yes
+   server: "{{ item.value.state }}"
+   network: "{{ network }}"
+   wait: true
+   timeout: 180
+  register: instancefloatingip
+  notify: wait for {{ item.value.name }} to be available
+  with_dict_items: "{{ osp_servers }}"
+ 
+  
 
 #- name: Wait for server to be available
