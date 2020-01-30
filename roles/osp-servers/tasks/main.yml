@@ -23,7 +23,7 @@
        cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
     with_dict: "{{ osp_servers }}"
 
-- name: Add floating IP to "{{ item.value.name }}"
+- name: Add floating IP to {{ item.value.name }}
   os_floating_ip:  
    cloud: osp_cloud
    state: "{{ item.value.state }}"
