@@ -12,8 +12,8 @@
     #meta:
      #group: prueba
      #deployment_name: prueba
-    nics:
-     - net-name: "{{ item.value.network }}"
+    #nics:
+    # - net-name: "{{ item.value.network }}"
     wait: yes
     #user_data: |
       #!/bin/bash
