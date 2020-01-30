@@ -8,19 +8,19 @@
     image: "{{ item.value.image }}"
     key_name: "{{ item.value.key_name }}"
     flavor: "{{ item.value.flavor }}"
-    security_group: "{{ item.value.security_group }}"
-    #meta:
-     #group: prueba
-     #deployment_name: prueba
-    #nics:
-    # - net-name: "{{ item.value.network }}"
+    security_groups: "{{ item.value.security_group }}"
+    meta:
+     group: prueba
+     deployment_name: prueba
+    nics:
+     - net-name: "{{ item.value.network }}"
     wait: yes
-    #user_data: |
-      #!/bin/bash
-      # curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
-      # cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-      # curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      # cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
+    user_data: |
+      !/bin/bash
+       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+       curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+       cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   with_dict: "{{ osp_servers }}"
 
 - name: Add floating IP to {{ item.value.name }}
