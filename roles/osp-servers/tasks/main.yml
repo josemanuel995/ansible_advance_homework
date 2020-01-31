@@ -2,7 +2,7 @@
 # tasks file for osp.servers
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   os_server:
-    cloud: osp_cloud
+    cloud: ospcloud
     name: "{{ item.value.name }}"
     state: "{{ item.value.state }}"
     image: "{{ item.value.image }}"
@@ -10,8 +10,8 @@
     flavor: "{{ item.value.flavor }}"
     security_groups: "{{ item.value.security_group }}"
     meta:
-     group: prueba
-     deployment_name: prueba
+     group: "{{ item.value.meta[0].value }}"
+     deployment_name: "{{ item.value.meta[1].value }}"
     nics:
      - net-name: "{{ item.value.network }}"
     wait: yes
