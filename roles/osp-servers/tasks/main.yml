@@ -10,8 +10,8 @@
     flavor: "{{ item.value.flavor }}"
     security_groups: "{{ item.value.security_group }}"
     meta:
-     group: "{{ item.value.meta[0].value }}"
-     deployment_name: "{{ item.value.meta[1].value }}"
+     group: "{{ item.value.meta.group }}"
+     deployment_name: "{{ item.value.meta.deployment_name }}"
     nics:
      - net-name: "{{ item.value.network }}"
     wait: yes
