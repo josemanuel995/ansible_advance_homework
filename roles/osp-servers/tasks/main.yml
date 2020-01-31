@@ -25,7 +25,7 @@
 
 - name: Add floating IP to {{ item.value.name }}
   os_floating_ip:  
-   cloud: osp_cloud
+   cloud: ospcloud
    state: "{{ item.value.state }}"
    reuse: yes
    server: "{{ item.value.state }}"
