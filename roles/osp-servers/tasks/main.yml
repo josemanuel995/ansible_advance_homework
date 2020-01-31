@@ -28,8 +28,8 @@
    cloud: ospcloud
    state: "{{ item.value.state }}"
    reuse: yes
-   server: "{{ item.value.state }}"
-   network: "{{ item.value.name }}"
+   server: "{{ item.value.name }}"
+   network: "{{ item.value.network }}"
    wait: true
    timeout: 180
   register: instancefloatingip
