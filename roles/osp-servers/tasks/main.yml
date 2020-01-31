@@ -29,7 +29,7 @@
    state: "{{ item.value.state }}"
    reuse: yes
    server: "{{ item.value.state }}"
-   network: "{{ item.value.network }}"
+   network: "{{ item.value.name }}"
    wait: true
    timeout: 180
   register: instancefloatingip
