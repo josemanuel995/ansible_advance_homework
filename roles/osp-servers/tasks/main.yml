@@ -13,7 +13,7 @@
     # group: "{{ item.value.meta.group }}"
      #deployment_name: "{{ item.value.meta.deployment_name }}"
     nics:
-     - net-name: "{{ item.value.network }}"
+     - net-name: int_network
     wait: yes
     user_data: |
       !/bin/bash
@@ -29,13 +29,11 @@
    state: "{{ item.value.state }}"
    reuse: yes
    server: "{{ item.value.name }}"
-   network: "{{ item.value.network }}"
+   network: int_network
    wait: true
    timeout: 180
   register: instancefloatingip
   notify: wait for {{ item.value.name }} to be available
   with_dict: "{{ osp_servers }}"
  
-  
-
 #- name: Wait for server to be available
