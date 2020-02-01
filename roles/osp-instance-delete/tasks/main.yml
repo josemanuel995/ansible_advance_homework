@@ -9,7 +9,7 @@
  
 - name: show server info
   debug:
-   msg: "{{ osp_instance_del}}"
+   msg: "{{ osp_instance_del }}"
   
   
   
