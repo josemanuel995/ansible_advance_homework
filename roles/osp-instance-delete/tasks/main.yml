@@ -8,7 +8,7 @@
   register: osp_instance_del
  
 - name: show server info
-   msg: "{{ item.server }}"
+   msg: {{ item.server }}
   loop: "{{ osp_instance_del.results }}"
   
   
