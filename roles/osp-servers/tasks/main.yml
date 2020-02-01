@@ -14,7 +14,7 @@
      group: "{{ item.value.meta_group }}"
      deployment_name: "{{ item.value.meta_deployment_name }}"
     nics:
-     - net-name: int_network
+     - net-name: ext_network
     wait: yes
     #user_data: |
      # !/bin/bash
