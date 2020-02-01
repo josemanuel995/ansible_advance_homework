@@ -8,7 +8,7 @@
  
 - name: show server info
   debug:
-   msg: "{{ item.name }}"
+   msg: "{{ item.name.hostname }}"
   with_items: "{{ osp_instance_del.openstack_servers }}"
   
   
