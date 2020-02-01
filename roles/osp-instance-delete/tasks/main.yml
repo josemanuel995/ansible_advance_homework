@@ -11,4 +11,4 @@
    cloud: ospcloud
    state: absent
    name: "{{ item.name }}"
-  with_items: "{{ osp_intance_del.openstack_servers }}"
+  with_items: "{{ osp_instance_del.openstack_servers }}"
