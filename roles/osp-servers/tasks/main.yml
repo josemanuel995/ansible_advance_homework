@@ -35,12 +35,7 @@
    timeout: 180
   register: instancefloatingip
   with_dict: "{{ osp_servers }}"
-  
- 
-- name: Show floating IPs
-  debug: var=item.floating_ip.floating_ip_address
-  loop: "{{ instancefloatingip.results }}"
-  
+    
 - name: wait for instance to be deployed
   wait_for:
     host: "{{ item.floating_ip.floating_ip_address }}"
