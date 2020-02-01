@@ -5,7 +5,7 @@
   cloud: ospcloud
    server: *
    filters:
-   vm_state: active
+    vm_state: active
    register: osp_instance_del
  
 - name: show server info
