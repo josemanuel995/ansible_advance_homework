@@ -7,7 +7,7 @@
  
 - name: show server info
   debug:
-   msg: "{{ osp_instance_del.openstack_servers.hostname }}"
+   msg: "{{ osp_instance_del.OS-EXT-SRV-ATTR:hostname }}"
   
   
   
