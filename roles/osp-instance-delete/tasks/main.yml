@@ -6,12 +6,9 @@
    region_name: RegionOne
   register: osp_instance_del
  
-- name: show server info
-  debug:
-   msg: "{{ item.name.hostname }}"
-  with_items: "{{ osp_instance_del.openstack_servers }}"
-  
-  
-  
-  #- name: Delete instances
-   
+- name: Delete instances
+  os_server:
+   cloud: ospcloud
+   state: absent
+   name: "{{ item.name }}"
+  with_items: "{{ osp_intance_del.openstack_servers }}"
