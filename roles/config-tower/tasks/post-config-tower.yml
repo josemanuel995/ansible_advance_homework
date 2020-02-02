@@ -13,7 +13,7 @@
 - name: Machine Credential to connect to workstation using openstack.pem
   tower_credential:
    tower_host: "tower1.{{ tower_GUID }}.example.opentlc.com"
-   tower_username: cloud-user
+   tower_username: admin
    tower_password: "{{ password }}"
    name: "{{ ssh_cred_name }}"
    organization: Default
