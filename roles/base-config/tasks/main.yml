@@ -1,5 +1,8 @@
 ---
 # Initial, common, system setup steps
+- name: clean the repository
+  shell: yum clean all
+
 
 - name: enable sudo without tty for some ansible commands
   replace:
@@ -8,11 +11,11 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
-#- name: enable repos
- # template:
-  #  src: repos_template.j2
-   # dest: /etc/yum.repos.d/open_three-tier-app.repo
-    #mode: 0644
+- name: enable repos
+  template:
+   src: repos_template.j2
+   dest: /etc/yum.repos.d/open_three-tier-app.repo
+   mode: 0644
 
 - name: setup hostname
   hostname:
