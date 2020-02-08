@@ -6,13 +6,12 @@
     state: latest
   notify: "enable {{ possgr }} at boot"
  
-# only run the next 2 tasks once!
-- name: initilize postgres database
-  command: postgresql-setup initdb
-
-- name: initilize postgres some more
-  command: chkconfig postgresql on     
-
+- name: initialize postgres
+  shell: 
+    postgresql-setup initdb
+  args:
+    creates: /var/lib/pgsql/data/PG_VERSION
+    
 - name: start postgress service
   service:
     name: "{{ possgr }}"
