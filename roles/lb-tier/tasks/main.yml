@@ -1,21 +1,21 @@
 ---
-- name: Intall the require packages
+- name: Intall ha_proxy
   package:
-   name: "{{ inst_ha }}"
+   name: ha_proxy
    state: latest
 
 - name: Start Load balancer at boot
   service:
-   name: "{{ inst_ha }}"
+   name: ha_proxy
    enabled: yes
 
 - name: Start Load balacer serivice
   service:
-   name: "{{ inst_ha }}"
+   name: ha_proxy
    state: started
 
-- name: Configure {{ inst_ha }}
+- name: Configure ha_proxy
   template:
    src: haproxy.cfg.j2
    dest: /etc/haproxy/haproxy.cfg
-  notify: "restart {{ inst_ha }}"
+  notify: restart ha_proxy
