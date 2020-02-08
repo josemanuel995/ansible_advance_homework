@@ -1,16 +1,16 @@
 ---
 # tasks file for app-tier
-- name: "install {{ inst_tom }}"
+- name: install tomcat
   yum:
-   name: "{{ inst_tom }}"
+   name: tomcat
    state: latest
 
-- name: enable {{ inst_tomcat }} at boot
+- name: enable tomcat at boot
   service:
-   name: "{{ inst_tom }}"
+   name: tomcat
    enabled: yes
    
-- name: start tomcat
+- name: start
   service:
     name: tomcat
     state: started
@@ -30,7 +30,7 @@
   template:
    src: index.html.j2
    dest: "{{ tomcat_web_root}}/index.html"
-  
+  notify: restart tomcat
   
 - name: copy static index.html to tomcat webapps/ansible/index.html
   become: true
@@ -38,4 +38,4 @@
     force: yes
     src: index.html.j2
     dest: /usr/share/tomcat/webapps/ansible/index.html
-  notify: "restart {{ inst_tom }}"
+  notify: restart tomcat
