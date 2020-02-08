@@ -8,6 +8,11 @@
     register: op_ip
     tags:
       - osp.smoke
+      
+  - name: Show if I using the correct Ip
+    debug:
+      msg: "Esta es la ip {{ openstack_info.ansible_facts.openstack_servers[0].public_v4 }}
+  
   - name: Curl website
     uri:
      url: "http://{{ item.public_v4 }}"
