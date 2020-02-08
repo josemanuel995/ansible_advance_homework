@@ -11,7 +11,7 @@
       
   - name: Show if I using the correct Ip
     debug:
-      msg: "{{ op_ip.openstack_servers.name}}"
+      msg: "{{ op_ip.openstack_servers }}"
   
   - name: Curl website
     uri:
