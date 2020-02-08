@@ -9,15 +9,33 @@
   service:
    name: "{{ inst_tom }}"
    enabled: yes
+   
+- name: start tomcat
+  service:
+    name: tomcat
+    state: started
 
 - name: create tomcat default web directory
   file:
    path: "{{tomcat_web_root }}"
    state: directory
 
+- name: create ansible webapps/ansible directory
+  file:
+    path: /usr/share/tomcat/webapps/ansible
+    state: directory
+
+
 - name: copy static index.html to tomcat weroot
   template:
    src: index.html.j2
    dest: "{{ tomcat_web_root}}/index.html"
-  notify: restart {{ inst_tom }}
-
+  
+  
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  become: true
+  template:
+    force: yes
+    src: index.html.j2
+    dest: /usr/share/tomcat/webapps/ansible/index.html
+  notify: "restart {{ inst_tom }}"
