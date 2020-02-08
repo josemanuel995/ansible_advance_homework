@@ -1,6 +1,6 @@
 ---
 # tasks file for app-tier
-- name: install {{ inst_tom }}
+- name: "install {{ inst_tom }}"
   yum:
    name: "{{ inst_tom }}"
    state: latest
