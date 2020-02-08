@@ -11,7 +11,7 @@
 
 - name: Start Load balacer serivice
   service:
-   name: ha_proxy
+   name: haproxy
    state: started
 
 - name: Configure haproxy
