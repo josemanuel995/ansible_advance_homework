@@ -1,12 +1,12 @@
 ---
-- name: Intall ha_proxy
+- name: Intall haproxy
   package:
-   name: ha_proxy
+   name: haproxy
    state: latest
 
 - name: Start Load balancer at boot
   service:
-   name: ha_proxy
+   name: haproxy
    enabled: yes
 
 - name: Start Load balacer serivice
@@ -14,8 +14,8 @@
    name: ha_proxy
    state: started
 
-- name: Configure ha_proxy
+- name: Configure haproxy
   template:
    src: haproxy.cfg.j2
    dest: /etc/haproxy/haproxy.cfg
-  notify: restart ha_proxy
+  notify: restart haproxy
