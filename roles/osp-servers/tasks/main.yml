@@ -44,7 +44,7 @@
   delegate_to: "{{ inventory_hostname }}"
   loop: "{{ instancefloatingip.results }}"
  
- - name: Fetch Instance Info
+- name: Fetch Instance Info
   os_server_facts:
     cloud: ospcloud
     region_name: RegionOne
