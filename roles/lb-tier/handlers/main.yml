@@ -3,5 +3,5 @@
 
 - name: restart ha_proxy
   service:
-   name: ha_proxy
+   name: haproxy
    state: restarted
