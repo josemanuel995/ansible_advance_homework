@@ -11,7 +11,7 @@
       
   - name: Show if I using the correct Ip
     debug:
-      msg: "{{ op_ip.openstack_servers.vm_state }}"
+      msg: "{{ op_ip.ansible_facts.openstack_servers.vm_state }}"
   
   - name: Curl website
     uri:
