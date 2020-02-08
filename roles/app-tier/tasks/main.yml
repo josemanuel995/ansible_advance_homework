@@ -17,7 +17,7 @@
 
 - name: create tomcat default web directory
   file:
-   path: "{{tomcat_web_root }}"
+   path: "{{ tomcat_web_root }}"
    state: directory
 
 - name: create ansible webapps/ansible directory
@@ -29,7 +29,7 @@
 - name: copy static index.html to tomcat weroot
   template:
    src: index.html.j2
-   dest: "{{ tomcat_web_root}}/index.html"
+   dest: "{{ tomcat_web_root }}/index.html"
   notify: restart tomcat
   
 - name: copy static index.html to tomcat webapps/ansible/index.html
