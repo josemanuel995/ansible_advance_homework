@@ -1,5 +1,9 @@
 ---
 # Initial, common, system setup steps
+- name: Clean up repos
+  shell: yum clean all
+
+
 - name: enable repos
   template:
     src: repos_template.repo
