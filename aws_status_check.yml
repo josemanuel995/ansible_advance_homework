@@ -1,4 +1,4 @@
-- hosts: tag_instance_filter_three_tier_app_j.a.valderrama.arnay
+- hosts: tag_instance_filter_three_tier_app_j_a_valderrama_arnay
   gather_facts: false
   tasks:
   - name: Check the instances status
