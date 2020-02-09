@@ -3,12 +3,10 @@
 - name: Clean up repos
   shell: yum clean all
 
-
-- name: enable repos
-  template:
-    src: repos_template.repo
-    dest: /etc/yum.repos.d/repos_template.repo
-    mode: 0644
+- name: Install EPEL repos 
+  yum:
+   name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   state: present 
 
 - name: install base tools and packages
   yum:
